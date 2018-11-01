@@ -1,0 +1,42 @@
+{
+  "name": "math-lab-backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.4",
+    "express-async-wrap": "^1.0.0",
+    "http-status": "^1.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.7",
+    "mongoose-unique-validator": "^2.0.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-jest": "^21.26.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^23.6.0",
+    "mongodb-memory-server": "^2.6.2",
+    "mongoose-fixture-loader": "^1.0.2",
+    "nodemon": "^1.18.5",
+    "prettier": "^1.14.3",
+    "supertest": "^3.3.0"
+  }
+}
