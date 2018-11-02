@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { secret } = require("../config/jwt");
 const CONSTANTS = require("../utils/constants");
+const Result = require("./result");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -19,7 +20,10 @@ const UserSchema = new mongoose.Schema({
     enum: [CONSTANTS.normalUser, CONSTANTS.fbUser]
   },
   passwordHash: String,
-  passwordSalt: String
+  passwordSalt: String,
+  userProgress: {
+    type: mongoose.Schema.Types.Mixed
+  }
 });
 
 UserSchema.methods.validPassword = function(password) {
@@ -67,3 +71,19 @@ UserSchema.methods.generateJWT = function() {
 
 UserSchema.plugin(uniqueValidator, { message: "should be unique" });
 module.exports = mongoose.model("User", UserSchema);
+
+/**
+ * user
+ *  - level
+ *    - no. of attempts
+ *    - attempt
+ *      - attempt id
+ *      - score
+ *      - date time of attempt
+ *
+ * scoreboard
+ *  - level
+ *    array of scores
+ *    - user
+ *    - score
+ */

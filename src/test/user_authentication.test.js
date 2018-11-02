@@ -38,7 +38,7 @@ describe("User authentication", () => {
       .post("/api/user/login")
       .send({ user: { username, password } });
     expect(response.statusCode).toBe(status.UNAUTHORIZED);
-    let responseErrors = response.body.error.message;
+    let responseErrors = response.body.message;
     expect(responseErrors).toEqual("username or password is invalid");
   });
 
@@ -50,7 +50,7 @@ describe("User authentication", () => {
       .post("/api/user/login")
       .send({ user: { username, password } });
     expect(response.statusCode).toBe(status.UNAUTHORIZED);
-    let responseErrors = response.body.error.message;
+    let responseErrors = response.body.message;
     expect(responseErrors).toEqual("username or password is invalid");
   });
 });

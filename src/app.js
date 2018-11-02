@@ -33,6 +33,8 @@ if (!isMongooseConnectionProvided) {
 // routes
 const apiRouter = require("./routes/user_api");
 app.use("/api/user", apiRouter);
+const resultRouter = require("./routes/result_api");
+app.use("/api/result", resultRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
