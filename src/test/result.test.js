@@ -54,7 +54,7 @@ test("that results can be updated successfully when there are existing results",
   expect(response.statusCode).toBe(status.OK);
   let resultJson = response.body;
   expect(Object.keys(resultJson.progress)).toHaveLength(2);
-  expect(resultJson.progress[1]).toEqual({ score: 20, attemptId: 2 });
+  expect(resultJson.progress[1]).toMatchObject({ score: 20, attemptId: 2 });
 });
 
 test("that results can be retrieved successfully", async () => {
@@ -88,13 +88,13 @@ test("that results can be updated successfully when the user does not have any e
   expect(response.statusCode).toBe(status.OK);
   let resultJson = response.body;
   expect(Object.keys(resultJson.progress)).toHaveLength(1);
-  expect(resultJson.progress[0]).toEqual({ score: 20, attemptId: 1 });
+  expect(resultJson.progress[0]).toMatchObject({ score: 20, attemptId: 1 });
 
   response = await agent.get("/api/result");
   expect(response.statusCode).toBe(status.OK);
   resultJson = response.body.results;
   expect(resultJson[CONSTANTS.level1].progress).toHaveLength(1);
-  expect(resultJson[CONSTANTS.level1].progress[0]).toEqual({
+  expect(resultJson[CONSTANTS.level1].progress[0]).toMatchObject({
     score: 20,
     attemptId: 1
   });
@@ -116,13 +116,14 @@ test("that results can be updated successfully for a level he has not attempted 
   expect(response.statusCode).toBe(status.OK);
   let resultJson = response.body;
   expect(Object.keys(resultJson.progress)).toHaveLength(1);
-  expect(resultJson.progress[0]).toEqual({ score: 15, attemptId: 1 });
+  expect(resultJson.progress[0]).toMatchObject({ score: 15, attemptId: 1 });
 
   response = await agent.get("/api/result");
   expect(response.statusCode).toBe(status.OK);
   resultJson = response.body.results;
+
   expect(resultJson[CONSTANTS.level2].progress).toHaveLength(1);
-  expect(resultJson[CONSTANTS.level2].progress[0]).toEqual({
+  expect(resultJson[CONSTANTS.level2].progress[0]).toMatchObject({
     score: 15,
     attemptId: 1
   });

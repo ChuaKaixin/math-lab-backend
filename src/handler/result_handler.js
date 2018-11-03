@@ -1,4 +1,5 @@
 const User = require("../model/user");
+const { updateScoreBoard } = require("./score_board_handler");
 
 async function getAttemptCount(req, res) {
   const user = req.user;
@@ -30,9 +31,11 @@ async function updateResult(req, res) {
   let nextId = currentAttemptCount + 1;
   userProgress[req.body.level].progress[currentAttemptCount] = {
     score: req.body.score,
-    attemptId: nextId
+    attemptId: nextId,
+    dateTimeOfAttempt: Date.now()
   };
   await User.findByIdAndUpdate(user._id, { $set: { userProgress } });
+  await updateScoreBoard(user.username, req.body.score, req.body.level);
   return res.json(userProgress[req.body.level]);
 }
 

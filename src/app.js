@@ -35,6 +35,8 @@ const apiRouter = require("./routes/user_api");
 app.use("/api/user", apiRouter);
 const resultRouter = require("./routes/result_api");
 app.use("/api/result", resultRouter);
+const scoreBoardRouter = require("./routes/score_board_api");
+app.use("/api/score_board", scoreBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

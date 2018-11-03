@@ -4,7 +4,6 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { secret } = require("../config/jwt");
 const CONSTANTS = require("../utils/constants");
-const Result = require("./result");
 
 const UserSchema = new mongoose.Schema({
   username: {
